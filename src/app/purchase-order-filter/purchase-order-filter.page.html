@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>Filter Order</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="filter-box">
+    <ion-item class="ion-no-padding required-item">
+    <ion-label class="required-label">Required</ion-label>
+  </ion-item>
+    <ion-list style="border-bottom: 1px solid #b5b5b7;margin-bottom: 16px;">
+      <div class="filter-div">
+        <div class="filter-sec">
+        <ion-label class="filter-label">Order Type</ion-label>
+        <ion-searchbar class="custom" color="light" show-clear-button="focus" placeholder="Search By Order Type"></ion-searchbar>
+      </div>
+      <div class="filter-sec">
+        <ion-label class="filter-label">Branch</ion-label>
+        <ion-searchbar class="custom" color="light" show-clear-button="focus" placeholder="Search By Branch"></ion-searchbar>
+      </div>
+      </div>
+    </ion-list>
+
+    <ion-list>
+      <div class="filter-div">
+        <div class="filter-sec">
+        <ion-label class="filter-label">Order Type</ion-label>
+        <ion-searchbar class="custom" color="light" show-clear-button="focus" placeholder="Search By Order Type"></ion-searchbar>
+      </div>
+      <div style="text-align: center;font-weight: 800;">
+        <ion-label class="filter-label">----- OR -----</ion-label>
+      </div>
+      <div class="filter-sec">
+        <ion-label class="filter-label">Branch</ion-label>
+        <ion-searchbar class="custom" color="light" show-clear-button="focus" placeholder="Search By Branch"></ion-searchbar>
+      </div>
+      </div>
+    </ion-list>
+  </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="6">
+      <button class="secondary-btn">Reset</button>
+    </ion-col>
+    <ion-col size="6">
+      <button class="primary-btn" (click)="openOrder()">Submit</button>
+    </ion-col>
+   </ion-row>
+</ion-footer>

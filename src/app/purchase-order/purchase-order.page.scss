@@ -1,0 +1,173 @@
+.list-view-badge{
+    .badge-custom {
+        font-family: "Poppins";
+        float: left;
+        padding : 4px;
+        font-size: 12px;
+        min-width: 50px;
+        font-weight: 500;
+        border-radius: 20px;
+        height: 20px;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 
+                    0 3px 1px -2px rgb(0 0 0 / 20%),
+                    0 1px 5px 0 rgb(0 0 0 / 12%);
+    }
+    .list-view{
+        
+        padding: 5px 5px 0px 5px;
+        background-color: rgb(243, 240, 240);
+    }
+    
+    
+    ion-item-divider{
+        padding: 0px;
+        border-radius: 8px;
+    }
+    .cat-label {
+        font-family: "Poppins";
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: small;
+        color: rgb(119, 118, 118);
+    }
+    .location-label {
+        font-family: "Poppins";
+        color: rgb(119, 118, 118);
+        // padding-top: 13px;
+    }
+    .asset-detail {
+        min-height: 55vh;
+    }
+    .asset-info {
+        bottom: 0;
+        position: absolute;
+        margin-bottom: 8%;
+        margin-left: 5%;
+        color: rgb(119, 118, 118);
+        font-weight: 600;
+    }
+    }
+
+.card-space{
+    width: 100%;
+    margin-bottom: 8px;
+    }
+    
+
+.card-tile .item-inner{
+    padding: 0px!important;
+    }
+    .card-tile .card{
+    width: 100%;
+    margin: 10px 0px;
+    border-radius: 4px;
+    border: 1px solid #C3C5C880;
+    }
+    .card-tile .job-card{
+    width: 84%;
+    margin-left: 0px;
+    border-radius: 4px;
+    border: 1px solid #C3C5C880;
+    }
+    .card .item-native, .card .item-inner{
+        padding: 0px!important;
+      }
+      .sec ion-col{
+        padding: 0px!important;
+      }
+      .sec{
+        padding: 0px 12px!important;
+        width: 100%;
+      }
+      .job-sec ion-col{
+        padding: 0px!important;
+      }
+      .sec-1{
+        padding: 12px 0px!important;
+      }
+      .sec-3{
+        padding: 12px 0px!important;
+        font-size: 10px;
+      }
+      .sec-1 .field-1{
+        font-size: 12px!important;
+        font-weight: 500;
+        min-width: 40px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sec-1 .field-3{
+        font-size: 14px!important;
+        font-weight: 500;
+        color: #7E7E7E!important;
+        text-align: right;
+        min-width: 72px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sec-2 .field-1{
+        font-size: 12px!important;
+        font-weight: 500;
+        min-width: 40px;
+        max-width: 300px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sec-2 .field-2{
+        font-size: 12px!important;
+        font-weight: 400;
+        min-width: 40px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #7E7E7E!important;
+      }
+      .sec-3 .field-1{
+        font-size: 12px!important;
+        font-weight: 400;
+        color: #7E7E7E!important;
+        min-width: 40px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sec-3 .field-2{
+        font-size: 12px!important;
+        font-weight: 400;
+        color: #7E7E7E!important;
+        min-width: 40px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sec-3 .field-3{
+        font-size: 12px!important;
+        font-weight: 400;
+        color: #7E7E7E!important;
+        text-align: right;
+        min-width: 40px;
+        max-width: 345px!important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .date-font{
+        margin: 0px;
+      }
+      .card-red{
+        border-left: 4px solid #FA2B2B!important;
+      }
+      .card-blue{
+        border-left: 4px solid #3449a9!important;
+      }
+      .card-orange{
+        border-left: 4px solid #EF8F4B!important;
+      }

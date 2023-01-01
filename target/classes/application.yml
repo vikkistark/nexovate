@@ -1,0 +1,104 @@
+server:
+  port: 7000
+
+
+#spring:
+#  datasource:
+#    url : jdbc:postgresql://localhost:5432/BookStore?stringtype=unspecified
+#    name:
+#    username: postgres
+#    password: admin
+spring:
+  profiles:
+    active: dev
+    include:
+      - swagger
+      - no-liquibase
+      - report
+      # Uncomment to activate TLS for the dev profile
+      #- tls
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: false # we use Webpack dev server + BrowserSync for livereload
+  jackson:
+    serialization:
+      indent-output: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/BookStore?stringtype=unspecified
+    #    url: jdbc:postgresql://localhost:5432/cryotosMaster?stringtype=unspecified
+    name:
+    username: postgres
+    password: admin
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+#  jpa:
+#    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
+#    database: POSTGRESQL
+#    show-sql: true
+#    properties:
+#      hibernate.id.new_generator_mappings: true
+#      hibernate.connection.provider_disables_autocommit: true
+#      hibernate.cache.use_second_level_cache: false
+#      hibernate.cache.use_query_cache: false
+#      hibernate.generate_statistics: false
+#      hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+#      hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.NoDefaultJCacheRegionFactory
+#      hibernate.tenant_identifier_resolver: com.piqotech.cryotos.tenancy.hibernate.OrgCurrentTenantIdentifierResolver
+#      hibernate.multi_tenant_connection_provider: com.piqotech.cryotos.tenancy.hibernate.OrgMultiTenantConnectionProviderImpl
+#      hibernate.multiTenancy: SCHEMA
+#    hibernate:
+#      ddl-auto: none
+#      naming:
+#        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+#        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+  liquibase:
+    # Remove 'faker' if you do not want the sample data to be loaded automatically
+    contexts: dev, faker
+  mail:
+    enabled: true # When using the MailService, configure an SMTP server and set this to true
+    host: smtp.gmail.com
+    port: 587
+    username: vigneshvaran@minusculetechnologies.com
+    password: vicky@1999
+    protocol: smtp
+    tls: true
+    baseUrl: http://127.0.0.1:8080
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp.gmail.com
+  messages:
+    cache-duration: PT1S # 1 second, see the ISO 8601 standard
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        provider:
+          azure-ad:
+            issuer-uri: https://login.microsoftonline.com/603cb139-fa5f-4501-afdc-9ab6e1f5e436/v2.0
+            authorization-uri: https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize
+            token-uri: https://login.microsoftonline.com/organizations/oauth2/v2.0/token
+            jwk-set-uri: https://login.microsoftonline.com/organizations/discovery/v2.0/keys
+            user-info-uri: https://graph.microsoft.com/oidc/userinfo
+            userNameAttribute: sub
+        registration:
+          azure-client:
+            provider: azure-ad
+            client-id: 900b8d20-225e-413a-a3a0-15ee551d66e2
+            client-secret: A8T7Q~r-GEb-MOjw~vx963eawkwymHKbxO8We
+            authorization-grant-type: authorization_code
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            scope: openid,profile,email
+          google:
+            client-id: 43841789545-2v9rergahjk6got5s56s0pggikdr0arr.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+
+

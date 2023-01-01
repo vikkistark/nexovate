@@ -1,0 +1,119 @@
+.order-detail h2{
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.list-view-badge{
+  .badge-custom {
+      font-family: "Poppins";
+      float: left;
+      padding : 4px;
+      font-size: 12px;
+      min-width: 50px;
+      font-weight: 500;
+      border-radius: 20px;
+      height: 20px;
+      box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 
+                  0 3px 1px -2px rgb(0 0 0 / 20%),
+                  0 1px 5px 0 rgb(0 0 0 / 12%);
+  }
+  .list-view{
+      
+      padding: 5px 5px 0px 5px;
+      background-color: rgb(243, 240, 240);
+  }
+  
+  
+  ion-item-divider{
+      padding: 0px;
+      border-radius: 8px;
+  }
+  .cat-label {
+      font-family: "Poppins";
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: small;
+      color: rgb(119, 118, 118);
+  }
+  .location-label {
+      font-family: "Poppins";
+      color: rgb(119, 118, 118);
+      // padding-top: 13px;
+  }
+  .asset-detail {
+      min-height: 55vh;
+  }
+  .asset-info {
+      bottom: 0;
+      position: absolute;
+      margin-bottom: 8%;
+      margin-left: 5%;
+      color: rgb(119, 118, 118);
+      font-weight: 600;
+  }
+  }
+
+.card-space{
+  width: 100%;
+  margin-bottom: 8px;
+  }
+  
+
+.card-tile .item-inner{
+  padding: 0px!important;
+  }
+  .card-tile .card{
+  width: 100%;
+  margin: 10px 0px;
+  border-radius: 4px;
+  border: 1px solid #C3C5C880;
+  padding-bottom: 8px;
+  box-shadow: rgb(60 64 67 / 30%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px
+  }
+  .card-tile .job-card{
+  width: 84%;
+  margin-left: 0px;
+  border-radius: 4px;
+  border: 1px solid #C3C5C880;
+  }
+  .card .item-native, .card .item-inner{
+      padding: 0px!important;
+    }
+    .sec ion-col{
+      padding: 0px!important;
+    }
+    .sec{
+      width: 100%;
+    }
+    .order-heading{
+      padding: 8px 0px 10px;
+    }
+    .order-heading .heading{
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .order-details{
+    }
+    .order-type{
+      color: #333333;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    .order-value{
+      color: #9d9b9b;
+      text-align: right;
+      font-size: 16px;  
+    }
+    
+    .date-font{
+      margin: 0px;
+    }
+    .card-red{
+      border-left: 4px solid #FA2B2B!important;
+    }
+    .card-blue{
+      border-left: 4px solid #3449a9!important;
+    }
+    .card-orange{
+      border-left: 4px solid #EF8F4B!important;
+    }

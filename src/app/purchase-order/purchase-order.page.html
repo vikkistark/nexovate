@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <ion-title>Purchase Order</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <div class="list-view-badge" >
+      <ion-item lines="none" class="card-tile" no-padding>
+        <div class="card-space" >
+           <ion-item *ngFor=" let order of purchaseorder" button (click)="openOrderDetail()" lines="none" class="child-item card card-blue" tappable no-padding>
+
+            <div class="sec">
+              <ion-row class="sec-1">
+                <ion-col size="9">
+                  <div class="field-1">{{order.name}}</div>
+                </ion-col>
+                <ion-col size="3">
+                  <div class="field-3">
+                    <iconify-icon icon= "carbon:in-progress" style="color: #3c75c6;"></iconify-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="sec-2">
+                <ion-col size="4">
+                  <div class="field-1">{{order.stockName}}</div>
+                </ion-col>
+                <ion-col size="8" class="field-2">
+                  <ion-icon name="location" class="location-icon"></ion-icon>
+                  <span style="margin-left: 5px;"  class="ion-padding-left">{{order.location}}</span>
+                </ion-col>
+              </ion-row>
+              <ion-row class="sec-3">
+                <ion-col size="6" class="location-label field-2">
+                  <ion-icon name="pricetags-outline" class="location-icon"></ion-icon>
+                  <span style="margin-left: 5px;">{{order.cost}}</span>
+                </ion-col>
+                <ion-col size="6">
+                  <p class="field-3 date-font" >{{order.days}}</p>
+                </ion-col>
+              </ion-row>
+            </div>
+
+           </ion-item>
+
+        </div>
+      <div></div>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

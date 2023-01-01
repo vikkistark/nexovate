@@ -1,0 +1,110 @@
+.account-form ion-label {
+    color: #3C75C6 !important;
+    z-index: 10;
+  }
+
+  .account-form ion-button {
+    text-transform: capitalize;
+  }
+
+  .setting-bt {
+    padding: 1px 15px 1px 1px;
+    z-index: 5;
+    font-size: 30px;
+    float: right;
+    color: #3C75C6;
+    position: relative;
+    margin: 17px;
+    height: 24px;
+    width: 28px;
+  }
+
+  .login-box {
+    padding: 0px;
+      margin: 71px 16px;
+  }
+  .login-box ion-input {
+    color: #333333;
+  }
+
+  .login-title {
+    text-align: center;
+    padding: 0px;
+    background-color: transparent;
+    background-image: url(../../../src/assets/images/Nexovate-Logo.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 102px 138px;
+    height: 140px;   
+  }
+  .login-title h5 {
+    margin: 20px 0 0px 0;
+    font-size: 3em;
+    font-weight: 300;
+  }
+  .login-title ion-icon {
+    font-size: 5em;
+    color: white !important;
+  }
+
+  .login-form .label-floating.sc-ion-label-md-h{
+    transform: translateY(145%)!important;
+  }
+  .login-form .item-has-value .label-floating.sc-ion-label-md-h{
+    transform: translateY(8%) scale(0.95) !important;
+  }
+  .ionlist{
+    background: transparent;
+    color: red;
+  }
+  .ionlist span{
+    color: #333333;
+  }
+  .ionlist span a{
+    color: #3C75C6;
+    font-weight: 600;
+  }
+  #forgot-btn {
+    color: #999999 !important;
+    float: right;
+    font-style: normal;
+    margin-top: 14px;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  .submit-btn {
+    font-family: "Poppins";
+    color: white !important;
+    background: #3C75C6;
+    height: 2.8em;
+    font-size: 14px;
+    padding: 0 1em;
+    border-radius: 4px;
+  }
+  .submit-btn-sec {
+    font-family: "Poppins";
+    color: #3C75C6 !important;
+    background: #ffffff;
+    border: 1px solid #3c75c6;
+    height: 2.8em;
+    font-size: 14px;
+    padding: 0 1em;
+    border-radius: 4px;
+  }
+  .signup-link {
+    width: 100%;
+    text-align: center;
+    font-size: 12px !important;
+    margin-top: 24px !important;
+    margin-bottom: 24px;
+  }
+  .mb-18{
+    margin-bottom: 18px;
+  }
+  .mb-54{
+    margin-bottom: 54px;
+  }
+  .mb-32{
+    margin-bottom: 32px;
+  }

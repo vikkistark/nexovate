@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 2
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <form (ngSubmit)="onsubmit()" #forgetForm1="ngForm">
+    <ion-item>
+      <ion-col >
+        <ion-item>
+          <ion-input type="number" name="username" [(ngModel)]="aaa.number" username placeholder="Username"
+            clearInput required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" name="email" [(ngModel)]="aaa.branch" email placeholder="Email"
+            clearInput required></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-item>
+    <ion-col >
+      <ion-button size="large" class="submit-btn" color="white"  id="login" fill="clear"
+      expand="full" type="submit" [disabled]="!forgetForm1.form.valid">submit</ion-button>
+    </ion-col>
+    <ion-col >
+      <ion-button size="large" class="submit-btn" color="white"  id="login" fill="clear"
+      expand="full" type="submit" (click)="viewItems()">show</ion-button>
+    </ion-col>
+  </form>
+
+  <ion-item>
+    <div>
+      <table>
+        <thead>
+          <th>Number</th>
+          <th>Branch</th>
+        </thead>
+        <tbody  *ngFor="let item of items | async">
+          <tr>
+            <td>{{item.number}}</td>
+            <td>{{item.branch}}</td>
+          </tr>
+        </tbody>
+        
+      </table>
+    </div>
+  </ion-item>
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+</ion-content>

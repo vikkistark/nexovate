@@ -1,0 +1,97 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu Content</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-item>Warehouse</ion-item>
+    <ion-item>PO Reciept</ion-item>
+    <ion-item>Support</ion-item>
+    <ion-item>Help</ion-item>
+    <ion-item>Sign Out</ion-item>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true">
+    <div class="home-card">
+      <div>
+        <div class="card-grid" >
+          
+            <ion-card style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
+              <iconify-icon icon="material-symbols:shopping-cart" style="color: #011b94;"></iconify-icon>
+              <ion-card-header>
+                <ion-card-title>Item Availability</ion-card-title>
+              </ion-card-header>
+              </ion-card>
+          
+          
+            <ion-card style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
+              <iconify-icon icon="mdi:briefcase-transfer" style="color: #011b94;"></iconify-icon>
+              <ion-card-header>
+                <ion-card-title>INV Transfer</ion-card-title>
+                <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+              </ion-card-header>
+              </ion-card>
+          
+        </div>
+      </div>
+      
+      <div>
+        <div class="card-grid" >
+          
+            <ion-card (click)="openPO()" style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
+              <iconify-icon icon="ic:twotone-receipt-long" style="color: #011b94;"></iconify-icon>
+              <ion-card-header>
+                <ion-card-title>PO-Receipt</ion-card-title>
+              </ion-card-header>
+              </ion-card>
+          
+          
+            <ion-card style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
+              <iconify-icon icon="material-symbols:share-location" style="color: #011b94;"></iconify-icon>
+              <ion-card-header>
+                <ion-card-title>Receipt-Routing</ion-card-title>
+                <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+              </ion-card-header>
+              </ion-card>
+          
+        </div>
+      </div>
+    
+    </div>
+    
+      <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+    </ion-content>
+</div>
+
+
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar color="secondary">
+    <app-menu></app-menu>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu = "main-menu"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="alert"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+

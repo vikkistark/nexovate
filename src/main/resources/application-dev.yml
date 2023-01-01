@@ -1,0 +1,11 @@
+server:
+  port: 7002
+
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/BookStore?stringtype=unspecified
+    name:
+    username: postgres
+    password: admin

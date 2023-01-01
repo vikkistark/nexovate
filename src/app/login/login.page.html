@@ -1,0 +1,67 @@
+<ion-content class="login account-form">
+  <ion-buttons class="setting-bt">
+    <ion-button (click)="checkDomain()" fill="clear">
+      <ion-icon style="color: #011b94;" name="settings"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <div class="login-box box-outer">
+        <!-- <div class=" login-title login-title-text">
+          <img src="../../../src/assets/images/Nexovate-Logo.png">
+        </div>
+        <span class="login-title-text mb-18">
+          Nexovate
+        </span> -->
+        <div style="margin-bottom: 25%;margin-top: 50%;;">
+          <ion-img src="../../assets/images/Nexovate-Logo.png"></ion-img>
+        </div>
+    
+    <form (ngSubmit)="log()" #registerForm="ngForm" class="login-form">
+      <ion-list class="ionlist mb-18">
+      <ion-item class="mb-8">
+        <ion-label position="floating">Email</ion-label>
+          <ion-input  type="email" name="email" id="email" autofocus="true" autocomplete="on"  (ngModelChange)="loginCredentials.email = $event.toLocaleLowerCase()" email
+          clearInput required></ion-input>
+          <!-- clearInput  -->
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+          <ion-input type="password"  id="password" name="password" clearInput
+           required> </ion-input>
+        </ion-item>
+        <span type="submit" id="forgot-btn" (click)="gotoForgotPwdPage()">Forgot Password?</span>
+      </ion-list>
+      
+        <ion-list>
+          <ion-button size="large" class="submit-btn" color="white"  id="login" fill="clear"expand="full" (click)="login()">Login</ion-button>
+        </ion-list>
+        <!-- <ion-list>
+          <ion-button size="large" class="submit-btn-sec" color="white"  id="login" fill="clear" expand="full" (click)="gotoScheduleDemoPage()">Schedule a demo</ion-button>
+        </ion-list> -->
+      </form> 
+      <div>
+      <span class="signup-link" type="submit" id="forgot-btn">@ Nexovate Inc & Legal Notice
+        <!-- <a (click)="gotoSingup()"> Sign up</a> -->
+      </span> <br>
+    </div>
+  <div>
+      <!-- <span class="signup-link">
+        <span style="font-weight: 600;">
+          For Support:
+        </span><br>
+        <span>@admin@nexovate.com</span><br>
+        <span>1600527000</span><br>
+        <span>nexovate inc Privacy Policy</span><br>
+      </span> -->
+    </div>
+      <!-- <ion-row>
+        <ion-col size="12">
+          <label type="submit" id="forgot-btn" (click)="gotoForgotPwdPage()"><u>Forgot Password?</u></label>
+        </ion-col>
+        <ion-col size="12">
+          <label type="submit" id="forgot-btn" (click)="signupforfree()"><u>SignUp?</u></label>
+        </ion-col>
+      </ion-row> -->
+     
+     
+  </div>
+</ion-content>
