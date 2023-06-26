@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 
 // import {AngularFirestoreModule} from 'angularfire2/firestore';
@@ -25,7 +26,8 @@ import { RouterModule } from '@angular/router';
      AppRoutingModule,
      HttpClientModule,
      FormsModule,
-     RouterModule
+     RouterModule,
+     IonicStorageModule.forRoot()
     //  AngularFireModule.initializeApp(firebaseConfig),
     //  AngularFirestoreModule,
     //  AngularFireAuthModule

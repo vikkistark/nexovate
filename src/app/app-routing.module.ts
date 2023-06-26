@@ -24,6 +24,16 @@ const routes: Routes = [
   }
   ,
   {
+  path: 'purchase-order/:id',
+  loadChildren: () => import('./purchase-order/purchase-order.module').then(m => m.purchaseOrderPageModule)
+}
+,
+  {
+    path: 'purchase-order-approval',
+    loadChildren: () => import('./purchase-order-approval/purchase-order-approval.module').then(m => m.purchaseOrderApprovalPageModule)
+  }
+  ,
+  {
     path: 'purchase-order-detail',
     loadChildren: () => import('./purchase-order-detail/purchase-order-detail.module').then(m => m.purchaseOrderDetailPageModule)
   },

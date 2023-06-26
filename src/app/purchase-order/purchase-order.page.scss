@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700,500,600');
+
+ion-label{
+  font-family: sans-serif;
+}
 .list-view-badge{
     .badge-custom {
-        font-family: "Poppins";
+        font-family: sans-serif;
         float: left;
         padding : 4px;
         font-size: 12px;
@@ -24,14 +29,14 @@
         border-radius: 8px;
     }
     .cat-label {
-        font-family: "Poppins";
+        font-family: sans-serif;
         text-transform: uppercase;
         font-weight: bold;
         font-size: small;
         color: rgb(119, 118, 118);
     }
     .location-label {
-        font-family: "Poppins";
+        font-family: sans-serif;
         color: rgb(119, 118, 118);
         // padding-top: 13px;
     }
@@ -58,10 +63,12 @@
     padding: 0px!important;
     }
     .card-tile .card{
-    width: 100%;
-    margin: 10px 0px;
-    border-radius: 4px;
-    border: 1px solid #C3C5C880;
+      width: 100%;
+      margin: 10px 0px;
+      border-radius: 4px;
+      border: 2px solid #C3C5C8;
+      box-shadow: 0 4px 7px #0000001a;
+      padding: 10px 0px 0px;
     }
     .card-tile .job-card{
     width: 84%;
@@ -171,3 +178,77 @@
       .card-orange{
         border-left: 4px solid #EF8F4B!important;
       }
+
+.card-space ion-item-option{
+  height: 95px;
+  margin: 12px 0px;
+  border-radius: 0px;
+}
+
+// filter css
+ion-content{
+}
+
+.filter-box{
+  padding: 14px 10px 6px 10px;
+}
+.filter-sec{
+  padding-bottom: 36px;
+}
+.required-item{
+  margin-bottom: 16px;
+  margin-top: -13px;
+}
+.required-label{
+  font-size: 13px;
+  color: #7e7e7e;
+}
+.filter-label{
+  font-size: 16px;
+  font-weight: 600;
+  color: #011b94;
+  padding-left: 17px;
+}
+.secondary-btn{
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: #011b94;
+  font-weight: 700;
+  background: #eff1fe;
+}
+.primary-btn{
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  background: #011b94;
+}
+searchbar-search-icon{
+  color: #3c75e6;
+}
+.card-inner-heading{
+  font-weight: 600;
+}
+.order-list{
+  padding-bottom: 12px;
+}
+.card-chevron{
+  color: rgba(46, 125, 222, 0.86);
+  position: absolute;
+  font-size: 24px;
+  z-index: 1;
+  top: 42px;
+  right: 0px;
+}
+.no-record{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.backdrop-no-tappable{
+  display: none;
+}

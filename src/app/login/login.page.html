@@ -11,21 +11,21 @@
         <span class="login-title-text mb-18">
           Nexovate
         </span> -->
-        <div style="margin-bottom: 25%;margin-top: 50%;;">
+        <div style="margin-bottom: 15%;margin-top: 50%;;">
           <ion-img src="../../assets/images/Nexovate-Logo.png"></ion-img>
         </div>
-    
+
     <form (ngSubmit)="log()" #registerForm="ngForm" class="login-form">
       <ion-list class="ionlist mb-18">
-      <ion-item class="mb-8">
-        <ion-label position="floating">Email</ion-label>
+      <ion-item class="mb-8" style="margin-bottom: 30px;">
+        <ion-label position="floating">Username</ion-label>
           <ion-input  type="email" name="email" id="email" autofocus="true" autocomplete="on"  (ngModelChange)="loginCredentials.email = $event.toLocaleLowerCase()" email
-          clearInput required></ion-input>
+          clearInput required [(ngModel)]="userId"></ion-input>
           <!-- clearInput  -->
       </ion-item>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-          <ion-input type="password"  id="password" name="password" clearInput
+          <ion-input type="password"  id="password" name="password" clearInput [(ngModel)]="password"
            required> </ion-input>
         </ion-item>
         <span type="submit" id="forgot-btn" (click)="gotoForgotPwdPage()">Forgot Password?</span>
@@ -64,4 +64,16 @@
      
      
   </div>
+  <!-- <div *ngIf="loading === true" style="height: 100vh;
+  width: 100vh;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0px;">
+  <ion-backdrop [visible]="true"></ion-backdrop> 
+  <ion-spinner name="lines-sharp" style="
+  margin-left: 29%;
+"></ion-spinner>
+</div> -->
+
 </ion-content>

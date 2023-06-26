@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
+import { ApiService } from '../service/service';
+
 
 @Component({
   selector: 'app-purchase-order',
@@ -8,20 +11,64 @@ import { Router } from '@angular/router';
 })
 export class purchaseOrderPage implements OnInit {
 
+  isModalOpen: boolean = false;
+  branchPlant:any;
+  OrderComapany:any;
+  orderType:any;
+
+
   purchaseorder: any[]=[];
+  addressNumber: any;
+  OrderList: any = [];
+  noData: boolean = false;
   constructor(
-  public  router: Router
+  public  router: Router,
+  public service: ApiService,
+  private loadingCtrl: LoadingController,
+
+
   ) {}
 
   ngOnInit(){
-    this.purchaseorder = [{name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'},
-                        {name: 'Henrich Orth', stockName:'Saxar Gmbh', location: 'Europe', cost: '45,209.92 EUR', days: '100 Days Old'}]
+    this.OrderList = [];
+    this.noData = false;
+    this.getAllOrder();
+  }
+  ionViewWillEnter() {
+    this.ngOnInit();
+  }
+
+  async getAllOrder(){
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading...',
+      duration: 3000,
+      spinner: 'circles',
+    });
+
+    loading.present();
+    this.service.getAllQuededPOorder().then((res) => {
+      this.OrderList = res.SRFR_Orders_Awaiting_Approval_1;
+      this.noData = this.OrderList.length > 0 ? false : true ;
+      this.loadingCtrl.dismiss();
+      console.log(res);
+    })
+    .catch((error) => {
+      this.noData = true;
+      this.loadingCtrl.dismiss();
+      console.error(error);
+    });
+  
+    // subscribe(res=>{
+    //   this.OrderList = res.SRFR_Orders_Awaiting_Approval_1;
+    // }
+    // ,
+    // err=>{
+    //   this.OrderList = []
+    // });
+  }
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
   openOrderDetail(){
@@ -29,6 +76,41 @@ export class purchaseOrderPage implements OnInit {
   }
 
   back(){
-    this.router.navigate(['/purchase-order-filter']);
+    this.router.navigate(['/dashboard']);
   }
+  logout(){
+    this.router.navigate(['/login']);
+  }
+  resetAllFilter(){
+    this.branchPlant='';
+    this.OrderComapany='';
+  }
+
+  searchPO(event){
+    // let userId = 'JDE';
+    // let password = 'Welcome1!'
+    // let base64 = btoa(userId+":"+password);
+    // this.showLoading();
+    // setTimeout(() => {
+    //   this.service.searchPoByAddressNumber(base64,this.addressNumber).subscribe(res=>{
+    //     this.OrderList = res.SRFR_Orders_Awaiting_Approval_1;
+    //   }
+    //   ,
+    //   err=>{
+    //     this.OrderList = []
+    //   });
+    // }, 1000);
+    
+  }
+  async showLoading() {
+    // const loading = await this.loadingCtrl.create({
+    //   message: 'Loading...',
+    //   duration: 3000,
+    //   spinner: 'circles',
+    //   backdropDismiss: false,
+    //   keyboardClose: false
+    // });
+    // loading.present();
+
+}
 }

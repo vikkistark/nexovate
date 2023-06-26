@@ -9,7 +9,7 @@ const routes: Routes = [
     children: [
       {
         path: 'tab1',
-        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.Tab1PageModule)
+        loadChildren: () => import('../dashboard/dashboard.module').then(m => m.dashboardPageModule)
       },
       {
         path: 'tab2',
