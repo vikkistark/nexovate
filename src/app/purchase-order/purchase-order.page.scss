@@ -83,7 +83,7 @@ ion-label{
         padding: 0px!important;
       }
       .sec{
-        padding: 0px 12px!important;
+        padding: 0px 12px 0px 0px !important;
         width: 100%;
       }
       .job-sec ion-col{
@@ -252,3 +252,14 @@ searchbar-search-icon{
 .backdrop-no-tappable{
   display: none;
 }
+.label-sec{
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+// .clear-icon{
+//   top: 30px;
+//   left: -2px;
+//   position: relative;
+//   background: white;
+// }

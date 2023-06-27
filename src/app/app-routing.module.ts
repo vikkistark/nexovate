@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import('./purchase-order-detail/purchase-order-detail.module').then(m => m.purchaseOrderDetailPageModule)
   },
   {
+    path: 'purchase-order-detail/:number/:type',
+    loadChildren: () => import('./purchase-order-detail/purchase-order-detail.module').then(m => m.purchaseOrderDetailPageModule)
+  },
+  {
     path: 'purchase-order-filter',
     loadChildren: () => import('./purchase-order-filter/purchase-order-filter.module').then(m => m.purchaseOrderFilterPageModule)
   }

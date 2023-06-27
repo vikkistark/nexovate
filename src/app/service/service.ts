@@ -169,7 +169,7 @@ export class ApiService{
           User_ID: 'jde'
         }
       return new Promise((resolve, reject) => {
-        this.http.get(`https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/JDE_ORCH_Orders_Awaiting_Approval`,{params, headers }).subscribe(
+        this.http.get(`	https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/ORCH_NX_GetPurchaseApproval`,{ headers }).subscribe(
           (response) => {
             resolve(response); // Resolve the Promise with the response data
           },
@@ -184,6 +184,91 @@ export class ApiService{
         );
       });
     }
+    // order filter calls
+    getAllOrderCompanyFilters(): Promise<any> {
+    let headers = this.getAuthHeaders();
+    return new Promise((resolve, reject) => {
+      this.http.get(`	https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/ORCH_NX_CompanyMasterSearch`,{headers }).subscribe(
+        (response) => {
+          resolve(response); // Resolve the Promise with the response data
+        },
+        (error) => {
+          if(error.error.message === "Token Invalid: Please Request a new Token"){
+            this.presentAlert('Your Login Session Expired','Try to Login Again');
+            this.router.navigate(['']);
+
+          }
+          reject(error); // Reject the Promise with the error
+        }
+      );
+    });
+  }
+
+  getAllBranchPlantFilters(): Promise<any> {
+    let headers = this.getAuthHeaders();
+    return new Promise((resolve, reject) => {
+      this.http.get(`	https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/ORCH_NX_BranchPlantMaster`,{headers }).subscribe(
+        (response) => {
+          resolve(response); // Resolve the Promise with the response data
+        },
+        (error) => {
+          if(error.error.message === "Token Invalid: Please Request a new Token"){
+            this.presentAlert('Your Login Session Expired','Try to Login Again');
+            this.router.navigate(['']);
+
+          }
+          reject(error); // Reject the Promise with the error
+        }
+      );
+    });
+  }
+
+  searchOrdersByFilter(OdrType,BranchPlant,OdrComp): Promise<any> {
+      let response;
+      let headers = this.getAuthHeaders();
+      let content = 	{ "orderType" : OdrType, "branchPlant" : BranchPlant,"orderCompany" : OdrComp };
+      return new Promise((resolve, reject) => { 
+        this.http.post(`https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/ORCH_NX_GetPurchaseApproval`,content,{ headers }).subscribe(
+      (response) => {
+        resolve(response); // Resolve the Promise with the response data
+      },
+      (error) => {
+        if(error.error.message === "Token Invalid: Please Request a new Token"){
+          this.presentAlert('Your Login Session Expired','Try to Login Again');
+          this.router.navigate(['']);
+
+        }
+        reject(error); // Reject the Promise with the error
+      }
+    );
+  });
+    }
+
+    getOrderDetail(odrNumber,odrType): Promise<any> {
+      let response;
+      let headers = this.getAuthHeaders();
+      let content = 		{
+        "orderNumber" : odrNumber,
+        "orderType" : odrType
+        };
+      return new Promise((resolve, reject) => { 
+        this.http.post(`	https://jdeps.nexovate.com:7077/jderest/v3/orchestrator/ORCH_NX_PO_Approval_OrderDetail`,content,{ headers }).subscribe(
+      (response) => {
+        resolve(response); // Resolve the Promise with the response data
+      },
+      (error) => {
+        if(error.error.message === "Token Invalid: Please Request a new Token"){
+          this.presentAlert('Your Login Session Expired','Try to Login Again');
+          this.router.navigate(['']);
+
+        }
+        reject(error); // Reject the Promise with the error
+      }
+    );
+  });
+    }
+  
+
     getAllQuededPOorders(): Observable<any>{
       let headers = this.getAuthHeaders();
       const params = {

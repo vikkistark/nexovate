@@ -38,20 +38,20 @@
       <ion-item lines="none" class="card-tile" no-padding>
         <div class="card-space" >
           <ion-item-sliding *ngFor=" let order of OrderList">
-           <ion-item  button (click)="openOrderDetail()" lines="none" class="child-item card card-blue" tappable no-padding>
+           <ion-item  button (click)="openOrderDetail(order.OrderNumber,order.OrTy)" lines="none" class="child-item card card-blue" tappable no-padding>
 
             <div class="sec" *ngIf="OrderList && OrderList.length !== 0">
               <ion-icon class="card-chevron" name="chevron-forward-outline" ></ion-icon>
               <ion-row class="order-heading">
                 <ion-col size="6">
-                  <div class="heading order-list card-inner-heading">{{order['Order Number']}}</div>
-                  <div class="heading order-list">{{order['Order Co']}}</div>
-                  <div class="heading order-list">{{order['Or Ty']}}</div>
+                  <div class="heading order-list card-inner-heading">{{order['Originator']}}</div>
+                  <div class="heading order-list">{{order['Responsible']}}</div>
+                  <div class="heading order-list">{{order['OrderNumber']}}-{{order['OrTy']}}-{{order['OrderCo']}}</div>
                 </ion-col>
                 <ion-col size="6" style="text-align:right">
-                  <div class="heading order-list card-inner-heading">{{order['Days Old']}} Days</div>
-                  <div class="heading order-list">{{order['Order Amount']}}</div>
-                  <div class="heading order-list">{{order['Order Date']}}</div>
+                  <div class="heading order-list card-inner-heading">{{order['DaysOld']}} Days</div>
+                  <div class="heading order-list">{{order['OrderAmount']}} {{order['CurCod']}}</div>
+                  <div class="heading order-list">{{order['OrderDate']}}</div>
                 </ion-col>
               </ion-row>
               </div>
@@ -95,7 +95,7 @@
         </ion-item-sliding>
 
         <div class="no-record" *ngIf="(!OrderList || OrderList.length === 0) && noData === true">
-          <div class="heading order-list card-inner-heading">No Order Found Search For Another Order</div>
+          <div class="heading order-list card-inner-heading">No Order Found </div>
         </div>
 
         </div>
@@ -122,16 +122,34 @@
           <ion-list style="border-bottom: 1px solid #b5b5b7;margin-bottom: 16px;">
             <div class="filter-div">
               <div class="filter-sec">
-                <ion-label class="filter-label">Order Type</ion-label>
-                <ion-searchbar class="custom" color="light" [(ngModel)]="orderType" show-clear-button="focus" placeholder="Search By Order Type"></ion-searchbar>
+                <div class="label-sec">
+                  <ion-label class="filter-label">Order Type</ion-label>
+                  <ion-icon *ngIf="orderType" class="clear-icon" name="close-circle" (click)="clearOrderType()"></ion-icon>
+                </div>
+                <ion-select [(ngModel)]="orderType" #selectOrderType>
+                  <ion-select-option *ngFor="let type of AllOrderType"  [value] = "type" [checked]="false">{{type}}</ion-select-option>
+                </ion-select>
+                <!-- <ion-searchbar class="custom" color="light" [(ngModel)]="orderType" show-clear-button="focus" placeholder="Search By Order Type"></ion-searchbar> -->
               </div>
               <div class="filter-sec">
+                <div class="label-sec">
                 <ion-label class="filter-label">Order Comapany</ion-label>
-                <ion-searchbar class="custom" color="light" [(ngModel)]="OrderComapany" show-clear-button="focus" placeholder="Search By Order Comapany"></ion-searchbar>
+                <ion-icon *ngIf="OrderComapany" class="clear-icon" name="close-circle" (click)="clearOrderCompany()"></ion-icon>
+                </div>
+                <!-- <ion-searchbar class="custom" color="light" [(ngModel)]="OrderComapany" show-clear-button="focus" placeholder="Search By Order Comapany"></ion-searchbar> -->
+                <ion-select [(ngModel)]="OrderComapany" #selectOrderCompany> 
+                  <ion-select-option *ngFor="let cmp of AllCompanies" [value] = "cmp" [checked]="false">{{cmp}}</ion-select-option>
+                </ion-select>
               </div>
               <div class="filter-sec">
-              <ion-label class="filter-label">Branch Plant</ion-label>
-              <ion-searchbar class="custom" color="light" [(ngModel)]="branchPlant" show-clear-button="focus" placeholder="Search By Branch Plant"></ion-searchbar>
+              <div class="label-sec">
+                <ion-label class="filter-label">Branch Plant</ion-label>
+                <ion-icon *ngIf="branchPlant" class="clear-icon" name="close-circle" (click)="clearBranch()"></ion-icon>
+                </div>
+              <!-- <ion-searchbar class="custom" color="light" [(ngModel)]="branchPlant" show-clear-button="focus" placeholder="Search By Branch Plant"></ion-searchbar> -->
+              <ion-select [(ngModel)]="branchPlant" #selectBranchPlant>
+                <ion-select-option *ngFor="let branch of AllBranchPlants" [value] = "branch" [checked]="false">{{branch}}</ion-select-option>
+              </ion-select>
             </div>
             </div>
           </ion-list>
