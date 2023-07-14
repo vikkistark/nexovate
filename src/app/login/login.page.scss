@@ -12,7 +12,7 @@
     z-index: 5;
     font-size: 30px;
     float: right;
-    color: #011b94;
+    color: #1E4A6D;
     position: relative;
     margin: 17px;
     height: 24px;
@@ -76,7 +76,7 @@
   .submit-btn {
     font-family: sans-serif;
     color: white !important;
-    background: #011b94;
+    background: #1E4A6D;
     height: 2.8em;
     font-size: 14px;
     padding: 0 1em;
@@ -116,4 +116,29 @@
     font-weight: 700;
     font-family: sans-serif;
     justify-content: space-around;
+  }
+
+  ion-backdrop {
+    opacity: 0.9;
+    // background: var(--ion-color-primary);
+    background:#d9d7d794;
+    filter: blur(8px);
+  -webkit-filter: blur(8px);
+  }
+  
+  #box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ion-background-color, #fff);
+    width: 90%;
+    height: 77px;
+    border-radius: 10px;
+    gap: 16px;
+    font-size: 20px;
   }

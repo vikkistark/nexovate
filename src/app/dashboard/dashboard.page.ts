@@ -14,6 +14,10 @@ export class dashboardPage {
   alphaName: any;
   userId: any;
   addressNo: any;
+  isLoading: boolean;
+  AwaitingCount: any;
+  ApprovedCount: any;
+  rejectOrdersCount: any;
 
   constructor(
   public  router: Router,
@@ -22,16 +26,62 @@ export class dashboardPage {
   private alertController: AlertController
   ) {}
   
+  ngOnInit(){
+    
+      this.getAllOrder();
+    
+      this.getAllApprovedOrder();
+    
+      this.getAllApprovedOrder();
+    
+    }
+
+    async getAllOrder(){
+      this.isLoading = true;
+      this.service.getAllQuededPOorder().then((res) => {
+        this.AwaitingCount = res.PurchaseOrders.length;
+        this.isLoading = false;
+      })
+      .catch((error) => {
+        this.AwaitingCount = 0;
+        this.isLoading = false;
+      });
+    }
+
+    async getAllApprovedOrder(){
+      this.isLoading = true;
+      this.service.getAllApprovedPOorder().then((res) => {
+        this.ApprovedCount = res.InquireApprovedOrders.length;
+        this.isLoading = false;
+        console.log(res);
+      })
+      .catch((error) => {
+        this.ApprovedCount = 0;
+        this.isLoading = false;
+      });
+    }
+  
+    async getAlRejectedOrder(){
+      this.isLoading = true;
+  
+      this.service. getAllRejectedPOorder().then((res) => {
+        this.isLoading = false;
+        this.rejectOrdersCount = res.InquireApprovedOrders.length;
+      })
+      .catch((error) => {
+        this.isLoading = false;
+        this.rejectOrdersCount = 0;
+        console.error(error);
+      });
+    }
+
+
+
   back(){
     this.router.navigate(['/login']);
   }
-  openPO(number?){
-    if(this.addressNumber){
-      this.router.navigate([`/purchase-order/${number}`]);
-    }
-    else{
-      this.router.navigate(['/purchase-order']);
-    }
+  openPO(order?){
+  this.router.navigate([`/purchase-order/${order}`]);
   }
   logout(){
     this.router.navigate(['/login']);

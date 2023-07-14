@@ -117,3 +117,44 @@
     .card-orange{
       border-left: 4px solid #EF8F4B!important;
     }
+
+.order-detail h2{
+font-size: 15px;
+font-weight: 600;
+color: #333333;
+}
+.order-detail P{
+  color: #2b2b2b9c;
+  font-weight: 500;
+  }
+ion-footer{
+  position: fixed;
+  bottom: 0px;
+  padding: 12px 5px;
+  background: white;
+}
+
+ion-backdrop {
+  opacity: 0.9;
+  // background: var(--ion-color-primary);
+  background:#d9d7d794;
+  filter: blur(8px);
+-webkit-filter: blur(8px);
+}
+
+#box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ion-background-color, #fff);
+  width: 90%;
+  height: 77px;
+  border-radius: 10px;
+  gap: 16px;
+  font-size: 20px;
+}

@@ -24,6 +24,15 @@ const routes: Routes = [
   }
   ,
   {
+    path: 'purchase-order/:type',
+    loadChildren: () => import('./purchase-order/purchase-order.module').then(m => m.purchaseOrderPageModule)
+  }
+  ,
+  {
+    path: 'purchase-order-list',
+    loadChildren: () => import('./purchase-order/purchase-order.module').then(m => m.purchaseOrderPageModule)
+  },
+  {
   path: 'purchase-order/:id',
   loadChildren: () => import('./purchase-order/purchase-order.module').then(m => m.purchaseOrderPageModule)
 }
@@ -34,11 +43,11 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'purchase-order-detail',
+    path: 'purchase-detail',
     loadChildren: () => import('./purchase-order-detail/purchase-order-detail.module').then(m => m.purchaseOrderDetailPageModule)
   },
   {
-    path: 'purchase-order-detail/:number/:type',
+    path: 'purchase-detail/:number/:type',
     loadChildren: () => import('./purchase-order-detail/purchase-order-detail.module').then(m => m.purchaseOrderDetailPageModule)
   },
   {

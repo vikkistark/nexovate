@@ -13,14 +13,14 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar color="secondary">
-      <ion-buttons slot="end">
+      <ion-buttons slot="start">
         <ion-menu-toggle>
           <ion-button>
             <ion-icon name="menu"></ion-icon>
           </ion-button>
         </ion-menu-toggle>
       </ion-buttons>
-      <ion-title>Home</ion-title>
+      <ion-title>Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content [fullscreen]="true">
@@ -28,14 +28,37 @@
       <div>
         <div class="card-grid" style="grid-template-columns: repeat(1, 1fr);">
 
-          <ion-card (click)="openPO()" style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
-            <iconify-icon icon="ic:twotone-receipt-long" style="color: #011b94;"></iconify-icon>
+          <ion-card (click)="openPO('Awaiting')" style="background: #DEF0FF;box-shadow: none;border: 1px solid #D1C8FF;">
             <ion-card-header>
-              <ion-card-title>PO-Approval</ion-card-title>
+              <ion-card-title class="order-count">{{AwaitingCount}}</ion-card-title>
             </ion-card-header>
+            <div class="flex-center-8">
+            <ion-icon name="receipt-outline" style="color: #1E4A6D;height: 24px;width: 24px;padding: 6px;border-radius: 30px;background: #BFE3FF;"></ion-icon>
+            <ion-card-title>Awaiting For Approval</ion-card-title>
+            </div>
             </ion-card>
+
+            <ion-card (click)="openPO('Approved')" style="background: #DEFFE7;box-shadow: none;border: 1px solid #D1C8FF;">
+              <ion-card-header>
+                <ion-card-title class="order-count" style="color:#00731F">{{ApprovedCount}}</ion-card-title>
+                </ion-card-header>
+              <div class="flex-center-8">
+              <ion-icon name="checkmark-circle-outline" style="color: #00731F;height: 24px;width: 24px;padding: 6px;border-radius: 30px;background: #A1F1B6"></ion-icon>
+              <ion-card-title>PO Orders Approved</ion-card-title>
+              </div>
+              </ion-card>
+
+            <ion-card (click)="openPO('Rejected')" style="background: #FFE1DE;box-shadow: none;border: 1px solid #D1C8FF;">
+              <ion-card-header>
+                <ion-card-title class="order-count" style="color:#EB4335">{{rejectOrdersCount}}</ion-card-title>
+              </ion-card-header>
+              <div class="flex-center-8">
+              <ion-icon name="close-circle-outline" style="color: #EB4335;height: 24px;width: 24px;padding: 6px;border-radius: 30px;background: #FFC1BC;"></ion-icon>
+              <ion-card-title>PO Orders Rejected</ion-card-title>
+              </div>
+              </ion-card>
           
-            <ion-card *ngIf="false" style="background: #eff1fe;box-shadow: none;border: 1px solid #C3C5C880;">
+            <ion-card *ngIf="false" style="background: #eff1fe;box-shadow: none;border: 1px solid #D1C8FF;">
               <iconify-icon icon="mdi:briefcase-transfer" style="color: #7e7e7e;"></iconify-icon>
               <ion-card-header>
                 <ion-card-title>INV Transfer</ion-card-title>
@@ -109,7 +132,12 @@
     </ion-content>
 </div>
 
-
+<ion-backdrop *ngIf="isLoading"></ion-backdrop>
+<div *ngIf="isLoading" id="box" class="loading-container">
+  <ion-spinner style="color: #0084cc;" name="bubbles"></ion-spinner>
+  <div class="loading-text">Loading...</div>
+</div>
+<div class="loading-backdrop"></div>
 <!-- <ion-header [translucent]="true">
   <ion-toolbar color="secondary">
     <app-menu></app-menu>

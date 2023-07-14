@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonSelect, LoadingController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonSelect } from '@ionic/angular';
 import { ApiService } from '../service/service';
 
 
@@ -28,10 +28,14 @@ export class purchaseOrderPage implements OnInit {
   AllCompanies: any = [];
   AllBranchPlants: any = [];
   AllOrderType : any = ['OP','OD'];
+  toastController: any;
+  PoOrderType: any;
+  isLoading: boolean;
   constructor(
   public  router: Router,
   public service: ApiService,
-  private loadingCtrl: LoadingController,
+  private route: ActivatedRoute,
+
 
 
   ) {}
@@ -39,30 +43,66 @@ export class purchaseOrderPage implements OnInit {
   ngOnInit(){
     this.OrderList = [];
     this.noData = false;
-    this.getAllOrder();
-    this.getAllFilters();
+    this.PoOrderType = this.route.snapshot.paramMap.get('type');
+    if(this.PoOrderType === 'Awaiting' || this.router.url === '/purchase-order-list')
+    {
+      this.getAllOrder();
+    }
+    if(this.PoOrderType === 'Approved'){
+      this.getAllApprovedOrder();
+    }
+    if(this.PoOrderType === 'Rejected'){
+      this.getAllApprovedOrder();
+    }
+    
   }
   ionViewWillEnter() {
     this.ngOnInit();
   }
 
   async getAllOrder(){
-    const loading = await this.loadingCtrl.create({
-      message: 'Loading...',
-      duration: 3000,
-      spinner: 'circles',
-    });
-
-    loading.present();
+    this.isLoading = true;
     this.service.getAllQuededPOorder().then((res) => {
+    this.getAllFilters();
       this.OrderList = res.PurchaseOrders;
       this.noData = this.OrderList.length > 0 ? false : true ;
-      this.loadingCtrl.dismiss();
+      this.isLoading = false;
       console.log(res);
     })
     .catch((error) => {
       this.noData = true;
-      this.loadingCtrl.dismiss();
+      this.isLoading = false;
+      console.error(error);
+    });
+  }
+
+  async getAllApprovedOrder(){
+    this.isLoading = true;
+    this.service.getAllApprovedPOorder().then((res) => {
+      this.OrderList = res.InquireApprovedOrders;
+      this.noData = this.OrderList.length > 0 ? false : true ;
+      this.isLoading = false;
+      console.log(res);
+    })
+    .catch((error) => {
+      this.noData = true;
+      this.isLoading = false;
+      console.error(error);
+    });
+  }
+
+  async getAlRejectedOrder(){
+    this.isLoading = true;
+
+    this.service. getAllRejectedPOorder().then((res) => {
+      this.isLoading = false;
+      this.OrderList = res.InquireApprovedOrders;
+      this.noData = this.OrderList.length > 0 ? false : true ;
+      console.log(res);
+    })
+    .catch((error) => {
+      this.isLoading = false;
+      this.noData = true;
       console.error(error);
     });
   }
@@ -74,17 +114,14 @@ export class purchaseOrderPage implements OnInit {
   }
   
   getAllFilters(){
-    this.service.getAllOrderCompanyFilters().then((res) => {
-      this.AllCompanies = []
-      res.CompanyMaster.forEach(cmp => {
-        this.AllCompanies.push(cmp.CompanyCode);
-      });
-    });
     this.service.getAllBranchPlantFilters().then((res) => {
-      this.AllBranchPlants = []
-      res.BranchPlantMaster.forEach(branch => {
-        this.AllBranchPlants.push(branch.BranchPlant);
-      });
+      this.AllBranchPlants = res.BranchPlantMaster;
+    });
+    this.service.getAllOrderCompanyFilters().then((res) => {
+      this.AllCompanies = res.CompanyMaster;
+    });
+    this.service.getAllOrderTypeFilters().then((res) => {
+      this.AllOrderType = res.DocumentTypes;
     });
   }
 
@@ -100,7 +137,10 @@ export class purchaseOrderPage implements OnInit {
   }
 
   openOrderDetail(number,type){
-    this.router.navigate(['/purchase-order-detail',number,type]);
+    if(this.PoOrderType === 'Awaiting' || this.router.url === '/purchase-order-list'){
+    this.router.navigate(['/purchase-detail',number,type]);
+  }
+
   }
 
   back(){
@@ -125,31 +165,31 @@ export class purchaseOrderPage implements OnInit {
     this.branchPlant = null;
   }
 
-  searchPO(event){
-    // let userId = 'JDE';
-    // let password = 'Welcome1!'
-    // let base64 = btoa(userId+":"+password);
-    // this.showLoading();
-    // setTimeout(() => {
-    //   this.service.searchPoByAddressNumber(base64,this.addressNumber).subscribe(res=>{
-    //     this.OrderList = res.SRFR_Orders_Awaiting_Approval_1;
-    //   }
-    //   ,
-    //   err=>{
-    //     this.OrderList = []
-    //   });
-    // }, 1000);
-    
+ 
+  ApproveOrder(number,type){
+    this.service.ApproveOrder(number,type,null).then((res) => {
+      res;
+      this.presentToast('middle','Order Approved');
+      this.getAllOrder();
+    });
   }
-  async showLoading() {
-    // const loading = await this.loadingCtrl.create({
-    //   message: 'Loading...',
-    //   duration: 3000,
-    //   spinner: 'circles',
-    //   backdropDismiss: false,
-    //   keyboardClose: false
-    // });
-    // loading.present();
 
-}
+  RejectOrder(number,type){
+    this.service.RejectOrder(number,type,null).then((res) => {
+      res;
+      this.presentToast('middle','Order Rejected');
+      this.getAllOrder();
+    });
+  }
+
+  async presentToast(position,message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2500,
+      position: position,
+    });
+
+    await toast.present();
+    this.back();
+  }
 }

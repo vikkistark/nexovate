@@ -1,7 +1,7 @@
 <ion-content class="login account-form">
   <ion-buttons class="setting-bt">
     <ion-button (click)="checkDomain()" fill="clear">
-      <ion-icon style="color: #011b94;" name="settings"></ion-icon>
+      <ion-icon style="color: #1E4A6D;" name="settings"></ion-icon>
     </ion-button>
   </ion-buttons>
   <div class="login-box box-outer">
@@ -75,5 +75,11 @@
   margin-left: 29%;
 "></ion-spinner>
 </div> -->
-
 </ion-content>
+
+<ion-backdrop *ngIf="isLoading"></ion-backdrop>
+<div *ngIf="isLoading" id="box" class="loading-container">
+  <ion-spinner style="color: #0084cc;" name="bubbles"></ion-spinner>
+  <div class="loading-text">Loading...</div>
+</div>
+<div class="loading-backdrop"></div>
